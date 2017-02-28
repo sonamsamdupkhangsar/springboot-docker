@@ -41,11 +41,12 @@
 	<build>
 		<finalName>myspringboot</finalName>
 		<plugins>
+<!--
 		  <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            
+            </plugin>-->
+<!--            
 			<plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
@@ -54,8 +55,6 @@
 					<imageName>myspringboot</imageName>
 					<baseImage>java</baseImage>
 					<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-					 <!--copy the service's jar file from target into the root directory 
-						of the image -->
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
@@ -65,7 +64,7 @@
 					</resources>
 				</configuration>
 			</plugin>
-
+-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
