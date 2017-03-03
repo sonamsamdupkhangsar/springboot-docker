@@ -1,19 +1,22 @@
-FROM java:8 
+FROM maven:3.3-jdk-8
 
-# Install maven
-RUN apt-get update  
-RUN apt-get install -y maven
+VOLUME /tmp
 
 WORKDIR /code
 
 # Prepare by downloading dependencies
 ADD pom.xml /code/pom.xml  
-RUN ["mvn", "dependency:resolve"]  
-RUN ["mvn", "verify"]
+#RUN ["mvn", "dependency:resolve"]
+#RUN ["mvn", "verify"]
 
 # Adding source, compile and package into a fat jar
-ADD src /code/src  
-RUN ["mvn", "package"]
+ADD src /code/src
+RUN ["mvn", "clean", "install"]
 
-EXPOSE 4567  
-CMD ["/usr/lib/jvm/java-8-openjdk-amd64/bin/java", "-jar", "target/myspringboot.jar"]  
+RUN ["ls", "/code/target"]
+RUN ["pwd"]
+RUN ["ls", "-ltrh", "/code/target/myspringboot.jar"]
+
+EXPOSE 8999
+
+ENTRYPOINT [ "java", "-jar", "/code/target/myspringboot.jar" ]
