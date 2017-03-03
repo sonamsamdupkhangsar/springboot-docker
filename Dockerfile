@@ -17,6 +17,6 @@ RUN ["ls", "/code/target"]
 RUN ["pwd"]
 RUN ["ls", "-ltrh", "/code/target/myspringboot.jar"]
 
-EXPOSE 8999
+EXPOSE 8080
 
 ENTRYPOINT [ "java", "-jar", "/code/target/myspringboot.jar" ]
