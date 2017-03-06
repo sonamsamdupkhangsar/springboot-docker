@@ -5,7 +5,7 @@
 		<file>logs/springboot.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>
-				[%thread], %-5level %logger{36} - %msg%n
+				%d{HH:mm:ss.SSS} [%thread], %-5level %logger{36} - %msg%n
 			</Pattern>
 		</encoder>
 	</appender>
@@ -15,7 +15,7 @@
 			by default -->
 		<encoder>
 			<pattern>
-				[%thread], %-5level %logger{36} - %msg%n
+				%d{HH:mm:ss.SSS} [%thread], %-5level %logger{36} - %msg%n
 			</pattern>
 		</encoder>
 	</appender>
