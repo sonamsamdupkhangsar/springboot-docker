@@ -22,11 +22,11 @@
 
  	<logger name="org.sonamexample" level="debug"/>
  
-	<root level="warn">
+	<root level="info">
 		<appender-ref ref="STDOUT" />
 	</root>
 
-	<root level="warn">
+	<root level="info">
 		<appender-ref ref="FILE_APPENDER" />
 	</root>
 </configuration>
