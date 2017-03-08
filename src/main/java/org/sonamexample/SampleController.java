@@ -55,6 +55,8 @@ public class SampleController {
             connected = "- got connected to Mongo at mongo-replica-node-0 27017";
             if(list != null) {
                 logger.debug("the size of databasenames is {}", list.size());
+                connected += " - list of database: " + list.size();
+
             }
             else {
                 logger.error("list is null for database names");
@@ -62,6 +64,7 @@ public class SampleController {
 
             for(String db: list) {
                 logger.debug("db: {}", db);
+                connected += ", db: " + db+" ";
             }
         } catch (Exception e) {
             logger.error("exception", e);
