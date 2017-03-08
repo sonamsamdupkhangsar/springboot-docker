@@ -46,7 +46,8 @@ public class SampleController {
     @ResponseBody
     public String mongo() {
         try {//mongo-replica-node-0:27017,mongo-replica-svc-b:27017,
-            MongoClient mongoClient = new MongoClient("'mongodb://mongo-replica-node-0:27017/test?replicaSet=my_replica_set");
+            MongoClient mongoClient = new MongoClient("mongo-replica-node-0", 27017);
+            ///test?replicaSet=my_replica_set");
             SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongoClient, "test");
             List<String> list = mongoClient.getDatabaseNames();
             for(String db: list) {
