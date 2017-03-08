@@ -45,18 +45,29 @@ public class SampleController {
     @RequestMapping(value = "/mongo", method = RequestMethod.GET)
     @ResponseBody
     public String mongo() {
+        String connected = "";
+
         try {//mongo-replica-node-0:27017,mongo-replica-svc-b:27017,
             MongoClient mongoClient = new MongoClient("mongo-replica-node-0", 27017);
             ///test?replicaSet=my_replica_set");
             SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongoClient, "test");
             List<String> list = mongoClient.getDatabaseNames();
+            connected = "- got connected to Mongo at mongo-replica-node-0 27017";
+            if(list != null) {
+                logger.debug("the size of databasenames is {}", list.size());
+            }
+            else {
+                logger.error("list is null for database names");
+            }
+
             for(String db: list) {
                 logger.debug("db: {}", db);
             }
         } catch (Exception e) {
             logger.error("exception", e);
+            connected = " - got exception: " + e.getMessage();
         }
-        return "mongo";
+        return "mongo - " + connected;
     }
 
 }
