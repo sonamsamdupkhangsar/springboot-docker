@@ -28,12 +28,6 @@ public class SampleController {
     @ResponseBody
     private String home() {
         logger.info("home controller called");
-        logger.info("saving person with name Sonam Wangyal");
-        Person person = new Person();
-        person.setFullName("Sonam Wangyal");
-
-        person = personRepository.save(person);
-        logger.debug("person saved: {}", person);
         return "Hello World!";
 
     }
