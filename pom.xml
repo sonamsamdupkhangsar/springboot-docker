@@ -35,7 +35,7 @@
 			<artifactId>spring-data-mongodb</artifactId>
 
 		</dependency>
-	
+
 
 		<dependency>
 			<groupId>junit</groupId>

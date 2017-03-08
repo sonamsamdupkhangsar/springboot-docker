@@ -45,9 +45,9 @@ public class SampleController {
     @RequestMapping(value = "/mongo", method = RequestMethod.GET)
     @ResponseBody
     public String mongo() {
-        try {
-            MongoClient mongoClient = new MongoClient("'mongodb://mongo-replica-svc-a:27017,mongo-replica-svc-b:27017,mongo-replica-svc-c:27017/your_db?replicaSet=my_replica_set");
-            SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongoClient, "localdb");
+        try {//mongo-replica-node-0:27017,mongo-replica-svc-b:27017,
+            MongoClient mongoClient = new MongoClient("'mongodb://mongo-replica-node-0:27017/test?replicaSet=my_replica_set");
+            SimpleMongoDbFactory simpleMongoDbFactory = new SimpleMongoDbFactory(mongoClient, "test");
             List<String> list = mongoClient.getDatabaseNames();
             for(String db: list) {
                 logger.debug("db: {}", db);
