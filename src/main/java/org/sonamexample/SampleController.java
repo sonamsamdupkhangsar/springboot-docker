@@ -3,9 +3,6 @@ package org.sonamexample;
 import com.mongodb.MongoClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.sonamexample.persistence.mongo.Person;
-import org.sonamexample.persistence.mongo.repostiory.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +18,6 @@ public class SampleController {
 
     private Logger logger = LoggerFactory.getLogger(getClass().toString());
 
-    @Autowired
-    private PersonRepository personRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
