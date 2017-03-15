@@ -3,12 +3,14 @@ package org.sonamexample;
 import com.mongodb.MongoClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.sonamexample.persistence.jpa.entity.Person;
+import org.sonamexample.persistence.jpa.repo.PersonRepository;
+import org.sonamexample.persistence.mongo.entity.Account;
+import org.sonamexample.persistence.mongo.repo.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +20,11 @@ public class SampleController {
 
     private Logger logger = LoggerFactory.getLogger(getClass().toString());
 
+    @Autowired
+    private PersonRepository personRepository;
+
+    @Autowired
+    private AccountRepository accountRepository;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
@@ -71,6 +78,47 @@ public class SampleController {
             connected = " - got exception: " + e.getMessage();
         }
         return "mongo - " + connected;
+    }
+
+    @RequestMapping(value="/person/add/{fullName}", method=RequestMethod.POST)
+    public Person addPerson(@PathVariable("fullName")String fullName) {
+        logger.debug("add person with fullName: '{}'", fullName);
+
+        Person person = new Person();
+        person.setFullName(fullName);
+        person = personRepository.save(person);
+
+        logger.debug("saved person {}", person);
+        return person;
+    }
+
+    @RequestMapping(value="/person/{id}", method = RequestMethod.GET)
+    public Person getPerson(@PathVariable("id") long id) {
+        logger.debug("find person by id {}", id);
+        Person person = personRepository.findOne(id);
+        logger.debug("for id: {} found person {}", id, person);
+        return person;
+    }
+
+    @RequestMapping(value="/account/add/{balance}", method = RequestMethod.POST)
+    public Account addAccount(@PathVariable("balance")int balance) {
+        logger.debug("create account with balance {}", balance);
+
+        Account account = new Account();
+        account.setBalalance(balance);
+
+        account = accountRepository.save(account);
+        logger.debug("account created {}", account);
+        return account;
+    }
+
+    @RequestMapping(value="/account/{id}", method = RequestMethod.GET)
+    public Account getAccount(@PathVariable("id")String id) {
+        logger.debug("get account by id {}", id);
+        Account account = accountRepository.findOne(id);
+
+        logger.debug("found account {}", account);
+        return account;
     }
 
 }

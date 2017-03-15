@@ -20,5 +20,50 @@ spec:
         env:
         - name: GET_HOSTS_FROM
           value: dns
+        - name: MONGODB_URL
+          valueFrom:
+            secretKeyRef:
+              name: database.variables
+              key: mongodb_replica_uri
+        - name: MONGODB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: user-database.variables
+              key: mongodb_user
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: user-database.variables
+              key: mongodb_password
+        - name: MONGODB_DB
+          valueFrom:
+            secretKeyRef:
+              name: user-database.variables
+              key: mongodb_db
+        - name: POSTGRESQL_DB_HOSTNAME
+          valueFrom:
+            secretKeyRef:
+              name: database.variables
+              key: postgresql_db_host
+        - name: POSTGRESQL_DB_PORT
+          valueFrom:
+            secretKeyRef:
+              name: database.variables
+              key: postgresql_db_port
+        - name: POSTGRESQL_DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: user-database.variables
+              key: postgresql_user
+        - name: POSTGRESQL_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: user-database.variables
+              key: postgresql_password
+        - name: POSTGRESQL_DB_DBNAME
+          valueFrom:
+            secretKeyRef:
+              name: user-database.variables
+              key: postgresql_db
         ports:
         - containerPort: 8080
