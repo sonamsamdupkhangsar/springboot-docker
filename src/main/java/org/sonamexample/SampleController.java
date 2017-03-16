@@ -8,6 +8,7 @@ import org.sonamexample.persistence.jpa.repo.PersonRepository;
 import org.sonamexample.persistence.mongo.entity.Account;
 import org.sonamexample.persistence.mongo.repo.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.springframework.web.bind.annotation.*;
@@ -26,11 +27,14 @@ public class SampleController {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Value("${MONGODB_URL}")
+    private String mongodbUrl;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
     private String home() {
         logger.info("home controller called");
-        return "Hello World!";
+        return "Hello World!, mongodbUrl is " + mongodbUrl;
 
     }
 
