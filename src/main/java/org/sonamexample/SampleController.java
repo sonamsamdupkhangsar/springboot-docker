@@ -30,12 +30,14 @@ public class SampleController {
     @Value("${MONGODB_URL}")
     private String mongodbUrl;
 
+    @Value("${spring.data.mongodb.uri}")
+    private String springMongodbUri;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
     private String home() {
         logger.info("home controller called");
-        return "Hello World!, mongodbUrl is " + mongodbUrl;
-
+        return "Hello World!, spring.mongoDbUri is " + springMongodbUri;
     }
 
     @RequestMapping(value = "/exception", method = RequestMethod.GET)
