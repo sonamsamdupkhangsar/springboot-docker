@@ -26,7 +26,7 @@ public class SampleController {
 
     @Autowired
     private AccountRepository accountRepository;
-    
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
     private String home() {
