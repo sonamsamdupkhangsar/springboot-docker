@@ -82,7 +82,7 @@ public class SampleController {
 
     @RequestMapping(value="/person/add/{fullName}", method=RequestMethod.POST)
     public Person addPerson(@PathVariable("fullName")String fullName) {
-        logger.debug("add person with fullName: '{}'", fullName);
+        logger.info("add person with fullName: '{}'", fullName);
 
         Person person = new Person();
         person.setFullName(fullName);
@@ -94,7 +94,7 @@ public class SampleController {
 
     @RequestMapping(value="/person/{id}", method = RequestMethod.GET)
     public Person getPerson(@PathVariable("id") long id) {
-        logger.debug("find person by id {}", id);
+        logger.info("find person by id {}", id);
         Person person = personRepository.findOne(id);
         logger.debug("for id: {} found person {}", id, person);
         return person;
@@ -102,7 +102,7 @@ public class SampleController {
 
     @RequestMapping(value="/account/add/{balance}", method = RequestMethod.POST)
     public Account addAccount(@PathVariable("balance")int balance) {
-        logger.debug("create account with balance {}", balance);
+        logger.info("create account with balance {}", balance);
 
         Account account = new Account();
         account.setBalalance(balance);
@@ -114,7 +114,7 @@ public class SampleController {
 
     @RequestMapping(value="/account/{id}", method = RequestMethod.GET)
     public Account getAccount(@PathVariable("id")String id) {
-        logger.debug("get account by id {}", id);
+        logger.info("get account by id {}", id);
         Account account = accountRepository.findOne(id);
 
         logger.debug("found account {}", account);
