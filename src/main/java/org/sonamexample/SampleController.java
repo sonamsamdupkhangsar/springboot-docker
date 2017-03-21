@@ -27,6 +27,9 @@ public class SampleController {
     @Autowired
     private AccountRepository accountRepository;
 
+    @Value("${developer.env.name}")
+    private String environmentName;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
     private String home() {
@@ -119,6 +122,12 @@ public class SampleController {
 
         logger.debug("found account {}", account);
         return account;
+    }
+
+    @RequestMapping(value="/env", method=RequestMethod.GET)
+    public String getEnvironment() {
+        logger.info("environment name is {}", environmentName);
+        return environmentName;
     }
 
 }

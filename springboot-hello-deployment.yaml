@@ -65,5 +65,10 @@ spec:
             secretKeyRef:
               name: user-database.variables
               key: postgresql_db
+        - name: ENVIRONMENT_NAME
+           valueFrom:
+              secretKeyRef:
+                name: environment.variables
+                key: environment
         ports:
         - containerPort: 8080
