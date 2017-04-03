@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: springboot-hello
 spec:
-  replicas: 4
+  replicas: 2 
   template:
     metadata:
       labels:
@@ -40,6 +40,11 @@ spec:
             secretKeyRef:
               name: user-database.variables
               key: mongodb_db
+        - name: POSTGRESQL_DB_REPLICA
+          valueFrom:
+            secretKeyRef:
+              name: database.variables
+              key: postgresql_db_host_failover
         - name: POSTGRESQL_DB_HOSTNAME
           valueFrom:
             secretKeyRef:
@@ -66,7 +71,7 @@ spec:
               name: user-database.variables
               key: postgresql_db
         - name: ENVIRONMENT_NAME
-           valueFrom:
+          valueFrom:
               secretKeyRef:
                 name: environment.variables
                 key: environment
