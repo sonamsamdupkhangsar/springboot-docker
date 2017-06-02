@@ -40,21 +40,11 @@ spec:
             secretKeyRef:
               name: user-database.variables
               key: mongodb_db
-        - name: POSTGRESQL_DB_REPLICA
+        - name: POSTGRESQL_SERVICE
           valueFrom:
             secretKeyRef:
               name: database.variables
-              key: postgresql_db_host_failover
-        - name: POSTGRESQL_DB_HOSTNAME
-          valueFrom:
-            secretKeyRef:
-              name: database.variables
-              key: postgresql_db_host
-        - name: POSTGRESQL_DB_PORT
-          valueFrom:
-            secretKeyRef:
-              name: database.variables
-              key: postgresql_db_port
+              key: postgresql_service
         - name: POSTGRESQL_DB_USERNAME
           valueFrom:
             secretKeyRef:
