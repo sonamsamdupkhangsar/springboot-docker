@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: springboot-hello
-        image: sonamsamdupkhangsar/springboot-docker
+        image: sonamsamdupkhangsar/springboot-docker:simple
         resources:
           requests:
             cpu: 100m
