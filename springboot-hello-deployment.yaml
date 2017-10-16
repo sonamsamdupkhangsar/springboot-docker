@@ -23,42 +23,42 @@ spec:
         - name: MONGODB_URL
           valueFrom:
             secretKeyRef:
-              name: database.variables
-              key: mongodb_replica_uri
+              name: dedicated-database.variables
+              key: mongodb
         - name: MONGODB_USERNAME
           valueFrom:
             secretKeyRef:
-              name: user-database.variables
+              name: user-dedicated-database.variables
               key: mongodb_user
         - name: MONGODB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: user-database.variables
+              name: user-dedicated-database.variables
               key: mongodb_password
         - name: MONGODB_DB
           valueFrom:
             secretKeyRef:
-              name: user-database.variables
+              name: user-dedicated-database.variables
               key: mongodb_db
         - name: POSTGRESQL_SERVICE
           valueFrom:
             secretKeyRef:
-              name: database.variables
-              key: postgresql_service
+              name: dedicated-database.variables
+              key: postgresqldb
         - name: POSTGRESQL_DB_USERNAME
           valueFrom:
             secretKeyRef:
-              name: user-database.variables
+              name: user-dedicated-database.variables
               key: postgresql_user
         - name: POSTGRESQL_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: user-database.variables
+              name: user-dedicated-database.variables
               key: postgresql_password
         - name: POSTGRESQL_DB_DBNAME
           valueFrom:
             secretKeyRef:
-              name: user-database.variables
+              name: user-dedicated-database.variables
               key: postgresql_db
         - name: ENVIRONMENT_NAME
           valueFrom:
