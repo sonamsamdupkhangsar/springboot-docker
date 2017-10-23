@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-	<appender name="FILE_APPENDER" class="ch.qos.logback.core.FileAppender">
-		<file>logs/springboot.log</file>
-		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-			<Pattern>
-				%d{HH:mm:ss.SSS} [%thread], %-5level %logger{36} - %msg%n
-			</Pattern>
-		</encoder>
-	</appender>
+
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
@@ -26,7 +19,5 @@
 		<appender-ref ref="STDOUT" />
 	</root>
 
-	<root level="info">
-		<appender-ref ref="FILE_APPENDER" />
-	</root>
+	
 </configuration>
